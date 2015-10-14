@@ -13,7 +13,7 @@ import com.hyman.highbird.crud.UserCRUD;
 import com.hyman.highbird.entity.User;
 import com.hyman.highbird.orm.util.Page;
 
-public class DataCRUDTest {
+public class UserCRUDTest {
 
 	private static UserCRUD crud = null;
 	

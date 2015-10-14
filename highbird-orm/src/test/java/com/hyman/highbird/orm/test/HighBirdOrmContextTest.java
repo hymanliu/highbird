@@ -16,7 +16,6 @@ public class HighBirdOrmContextTest {
 		HighBirdOrmContext configContext = HighBirdOrmContext.getInstance();
 		Map<Class<?>,TableMapping> context = configContext.getConfiguration();
 		
-		
 		System.out.println(context.get(User.class).getColumns());
 	}
 }
