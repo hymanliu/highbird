@@ -24,7 +24,7 @@ public class HTableFactory {
 	
 	
 	private HTableFactory(){
-		configuration = ORMConfigContext.getInstance().getConfiguration();
+		configuration = HighBirdOrmContext.getInstance().getConfiguration();
 		persistAll();
 	}
 	

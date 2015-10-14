@@ -1,4 +1,4 @@
-package com.hyman.highbird.orm;
+package com.hyman.highbird.orm.test;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -9,8 +9,8 @@ import org.apache.hadoop.hbase.client.Get;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.hyman.highbird.crud.UserCRUD;
 import com.hyman.highbird.entity.User;
-import com.hyman.highbird.orm.crud.UserCRUD;
 import com.hyman.highbird.orm.util.Page;
 
 public class DataCRUDTest {

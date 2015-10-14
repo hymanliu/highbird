@@ -26,7 +26,7 @@ import org.apache.hadoop.hbase.util.Bytes;
 import com.hyman.highbird.orm.core.Column;
 import com.hyman.highbird.orm.core.DataRow;
 import com.hyman.highbird.orm.core.HTableFactory;
-import com.hyman.highbird.orm.core.ORMConfigContext;
+import com.hyman.highbird.orm.core.HighBirdOrmContext;
 import com.hyman.highbird.orm.core.TableMapping;
 import com.hyman.highbird.orm.util.Page;
 
@@ -43,7 +43,7 @@ public abstract class BaseCRUD<T> implements CRUD<T>{
 		tableFactory = HTableFactory.getInstance();
 		ParameterizedType type = (ParameterizedType) this.getClass().getGenericSuperclass();
 		clazz = (Class<T>) type.getActualTypeArguments()[0];
-		mapping = ORMConfigContext.getInstance().getConfiguration().get(clazz);
+		mapping = HighBirdOrmContext.getInstance().getConfiguration().get(clazz);
 		table = tableFactory.createHTable(clazz);
 	}
 	
