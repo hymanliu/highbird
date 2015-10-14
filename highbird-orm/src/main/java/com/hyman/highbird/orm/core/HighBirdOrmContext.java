@@ -35,18 +35,20 @@ public class HighBirdOrmContext {
 	}
 	
 	public static HighBirdOrmContext getInstance(){
-		if(instance==null){
-			instance = new HighBirdOrmContext();
-			TableProcessor TableProcessor = new TableProcessor();
-			RowKeyProcessor rowKeyProcessor = new RowKeyProcessor();
-			QualifierProcessor columnProcessor = new QualifierProcessor();
-			
-			for(Class<?> clazz : instance.clazzes){
-				TableMapping mapping = new TableMapping();
-				TableProcessor.process(mapping, clazz);
-				rowKeyProcessor.process(mapping, clazz);
-				columnProcessor.process(mapping, clazz);
-				instance.configuration.put(clazz, mapping);
+		synchronized(HighBirdOrmContext.class){
+			if(instance==null){
+				instance = new HighBirdOrmContext();
+				TableProcessor TableProcessor = new TableProcessor();
+				RowKeyProcessor rowKeyProcessor = new RowKeyProcessor();
+				QualifierProcessor columnProcessor = new QualifierProcessor();
+				
+				for(Class<?> clazz : instance.clazzes){
+					TableMapping mapping = new TableMapping();
+					TableProcessor.process(mapping, clazz);
+					rowKeyProcessor.process(mapping, clazz);
+					columnProcessor.process(mapping, clazz);
+					instance.configuration.put(clazz, mapping);
+				}
 			}
 		}
 		return instance;
