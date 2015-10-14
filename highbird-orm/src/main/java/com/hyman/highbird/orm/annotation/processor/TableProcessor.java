@@ -1,6 +1,6 @@
-package com.hyman.highbird.orm.annation.processor;
+package com.hyman.highbird.orm.annotation.processor;
 
-import com.hyman.highbird.orm.annation.Table;
+import com.hyman.highbird.orm.annotation.Table;
 import com.hyman.highbird.orm.core.TableMapping;
 
 public class TableProcessor implements Processor {

@@ -1,8 +1,8 @@
 package com.hyman.highbird.entity;
 
-import com.hyman.highbird.orm.annation.Qualifier;
-import com.hyman.highbird.orm.annation.RowKey;
-import com.hyman.highbird.orm.annation.Table;
+import com.hyman.highbird.orm.annotation.Qualifier;
+import com.hyman.highbird.orm.annotation.RowKey;
+import com.hyman.highbird.orm.annotation.Table;
 
 @Table(name="user",families={"info"})
 public class User {

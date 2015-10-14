@@ -1,4 +1,4 @@
-package com.hyman.highbird.orm.annation.processor;
+package com.hyman.highbird.orm.annotation.processor;
 
 import com.hyman.highbird.orm.core.TableMapping;
 

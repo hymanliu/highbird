@@ -1,4 +1,4 @@
-package com.hyman.highbird.orm.annation;
+package com.hyman.highbird.orm.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

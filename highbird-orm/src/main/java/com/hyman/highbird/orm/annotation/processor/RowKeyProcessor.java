@@ -1,8 +1,8 @@
-package com.hyman.highbird.orm.annation.processor;
+package com.hyman.highbird.orm.annotation.processor;
 
 import java.lang.reflect.Field;
 
-import com.hyman.highbird.orm.annation.RowKey;
+import com.hyman.highbird.orm.annotation.RowKey;
 import com.hyman.highbird.orm.core.TableMapping;
 
 

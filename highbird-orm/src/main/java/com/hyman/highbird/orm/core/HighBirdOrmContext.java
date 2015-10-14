@@ -9,9 +9,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.hyman.highbird.orm.annation.processor.QualifierProcessor;
-import com.hyman.highbird.orm.annation.processor.RowKeyProcessor;
-import com.hyman.highbird.orm.annation.processor.TableProcessor;
+import com.hyman.highbird.orm.annotation.processor.QualifierProcessor;
+import com.hyman.highbird.orm.annotation.processor.RowKeyProcessor;
+import com.hyman.highbird.orm.annotation.processor.TableProcessor;
 
 
 public class HighBirdOrmContext {
