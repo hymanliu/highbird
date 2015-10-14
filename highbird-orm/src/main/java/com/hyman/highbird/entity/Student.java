@@ -4,7 +4,7 @@ import com.hyman.highbird.orm.annation.Qualifier;
 import com.hyman.highbird.orm.annation.RowKey;
 import com.hyman.highbird.orm.annation.Table;
 
-@Table(name="t_student",families={"info"})
+@Table(name="student",families={"info"})
 public class Student {
 	@RowKey(name="rowKey")
 	private String rowKey;

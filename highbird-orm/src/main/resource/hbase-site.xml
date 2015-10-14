@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+	<property>
+	  <name>hbase.rootdir</name>
+	  <value>hdfs://hadoop110.hyman.com:8020/hbase</value>
+	</property>
+	<property>
+	  <name>hbase.cluster.distributed</name>
+	  <value>true</value>
+	</property>
+	<property>
+	  <name>hbase.zookeeper.quorum</name>
+	  <value>hadoop110.hyman.com</value>
+	</property>
+	<property>
+	  <name>dfs.replication</name>
+	  <value>1</value>
+	</property>
+</configuration>
