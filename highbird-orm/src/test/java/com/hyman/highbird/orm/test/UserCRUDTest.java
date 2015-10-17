@@ -54,7 +54,7 @@ public class UserCRUDTest {
 			u.setId(df.format(i));
 			u.setName("hyman-"+i);
 			u.setPhone("1868882"+df.format(i));
-			crud.put(u);
+			crud.add(u);
 		}
 	}
 	

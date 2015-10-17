@@ -13,7 +13,7 @@ public interface CRUD<T> {
 	
 	Page<T> scanPage(String startRow, int limit);
 
-	void put(T o);
+	void add(T o);
 
 	void delete(String rowId);
 
