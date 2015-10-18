@@ -1,5 +1,7 @@
 package com.hyman.highbird.entity;
 
+import java.util.Date;
+
 import com.hyman.highbird.orm.annotation.Qualifier;
 import com.hyman.highbird.orm.annotation.RowKey;
 import com.hyman.highbird.orm.annotation.Table;
@@ -12,10 +14,11 @@ public class Student {
 	private String id;
 	@Qualifier(family="info",qualifier="name")
 	private String name;
-	@Qualifier(family="info",qualifier="age")
-	private String age;
+	@Qualifier(family="info",qualifier="birthday")
+	private Date birthday;
 	@Qualifier(family="info",qualifier="number")
 	private String number;
+	
 	
 	public String getRowKey() {
 		return rowKey;
@@ -35,11 +38,12 @@ public class Student {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getAge() {
-		return age;
+	
+	public Date getBirthday() {
+		return birthday;
 	}
-	public void setAge(String age) {
-		this.age = age;
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
 	}
 	public String getNumber() {
 		return number;

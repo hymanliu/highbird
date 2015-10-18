@@ -1,10 +1,12 @@
 package com.hyman.highbird.orm.core;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.ParameterizedType;
 import java.util.Map;
 import java.util.NavigableMap;
 
+import org.apache.commons.beanutils.BeanUtils;
 import org.apache.hadoop.hbase.client.Get;
 import org.apache.hadoop.hbase.client.Put;
 import org.apache.hadoop.hbase.client.Result;
@@ -46,7 +48,11 @@ public abstract class EntityRelationConvert<H> {
 			for(Column key : columns.keySet()){
 				Field field = tableMapping.getField(key);
 				field.setAccessible(true);
-				field.set(t, columns.get(key));
+				try {
+					BeanUtils.setProperty(t, field.getName(), columns.get(key));
+				} catch (InvocationTargetException e) {
+					System.out.println(e.getMessage());
+				}
 			}
 			Field rowKey = tableMapping.getRowkey();
 			rowKey.setAccessible(true);
@@ -75,7 +81,7 @@ public abstract class EntityRelationConvert<H> {
 			for(Column column : tableMapping.getColumns()){
 				Field field = tableMapping.getField(column);
 				field.setAccessible(true);
-				row.putColumn(column, (String) field.get(o));
+				row.putColumn(column, field.get(o).toString());
 			}
 		} catch (IllegalArgumentException | IllegalAccessException e) {
 			e.printStackTrace();

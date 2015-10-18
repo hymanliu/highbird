@@ -40,14 +40,22 @@ public class UserCRUDTest {
 	
 	@Test
 	public void testPut(){
-		for(int i=0;i<200;i++){
-			User u = new User();
-			DecimalFormat df = new DecimalFormat("0000");
-			u.setId(df.format(i));
-			u.setName("hyman-"+i);
-			u.setPhone("1868882"+df.format(i));
-			crud.add(u);
-		}
+//		for(int i=0;i<200;i++){
+//			User u = new User();
+//			DecimalFormat df = new DecimalFormat("0000");
+//			u.setId(df.format(i));
+//			u.setName("hyman-"+i);
+//			u.setPhone("1868882"+df.format(i));
+//			crud.add(u);
+//		}
+		
+		User u = new User();
+		DecimalFormat df = new DecimalFormat("0000");
+		u.setId(df.format(103));
+		u.setName("hyman-"+103);
+		u.setPhone("1868882"+df.format(103));
+		u.setAge(20);
+		crud.add(u);
 	}
 	
 	@Test

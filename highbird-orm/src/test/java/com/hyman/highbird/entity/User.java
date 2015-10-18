@@ -13,13 +13,10 @@ public class User {
 	private String name;
 	@Qualifier(family="info",qualifier = "phone")
 	private String phone;
+	@Qualifier(family="info",qualifier = "age")
+	private int age;
 	
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
+	
 	public String getName() {
 		return name;
 	}
@@ -36,6 +33,18 @@ public class User {
 	@Override
 	public String toString() {
 		return "id:"+id+"\tname:"+name+"\tphone:"+phone;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
 	}
 	
 }
