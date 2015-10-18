@@ -43,11 +43,11 @@ public class HighBirdOrmContext {
 				QualifierProcessor columnProcessor = new QualifierProcessor();
 				
 				for(Class<?> clazz : instance.clazzes){
-					TableMapping mapping = new TableMapping();
-					TableProcessor.process(mapping, clazz);
-					rowKeyProcessor.process(mapping, clazz);
-					columnProcessor.process(mapping, clazz);
-					instance.configuration.put(clazz, mapping);
+					TableMapping tableMapping = new TableMapping();
+					TableProcessor.process(tableMapping, clazz);
+					rowKeyProcessor.process(tableMapping, clazz);
+					columnProcessor.process(tableMapping, clazz);
+					instance.configuration.put(clazz, tableMapping);
 				}
 			}
 		}

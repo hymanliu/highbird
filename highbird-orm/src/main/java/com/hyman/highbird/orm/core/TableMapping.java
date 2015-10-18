@@ -7,8 +7,7 @@ import java.util.Map;
 public class TableMapping {
 
 	private String name;
-	private String rowkey;
-	private Field rowKeyField;
+	private Field rowkey;
 	private String[] families;
 	private Map<Column,Field> columnFieldMap =  new HashMap<>();
 	
@@ -19,10 +18,10 @@ public class TableMapping {
 		this.name = name;
 	}
 	
-	public String getRowkey() {
+	public Field getRowkey() {
 		return rowkey;
 	}
-	public void setRowkey(String rowkey) {
+	public void setRowkey(Field rowkey) {
 		this.rowkey = rowkey;
 	}
 	public String[] getFamilies() {
@@ -46,12 +45,6 @@ public class TableMapping {
 	
 	public Field getField(Column column){
 		return columnFieldMap.get(column);
-	}
-	public Field getRowKeyField() {
-		return rowKeyField;
-	}
-	public void setRowKeyField(Field rowKeyField) {
-		this.rowKeyField = rowKeyField;
 	}
 	
 }

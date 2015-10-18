@@ -48,9 +48,9 @@ public abstract class EntityRelationConvert<H> {
 				field.setAccessible(true);
 				field.set(t, columns.get(key));
 			}
-			Field rowKeyField = tableMapping.getRowKeyField();
-			rowKeyField.setAccessible(true);
-			rowKeyField.set(t, row.getId());
+			Field rowKey = tableMapping.getRowkey();
+			rowKey.setAccessible(true);
+			rowKey.set(t, row.getId());
 		} catch (InstantiationException | IllegalArgumentException | IllegalAccessException e) {
 			e.printStackTrace();
 		} 
@@ -67,10 +67,10 @@ public abstract class EntityRelationConvert<H> {
 		
 		DataRow row = new DataRow();
 		
-		Field rowKeyField = tableMapping.getRowKeyField();
-		rowKeyField.setAccessible(true);
+		Field rowkey = tableMapping.getRowkey();
+		rowkey.setAccessible(true);
 		try {
-			row.setId((String) rowKeyField.get(o));
+			row.setId((String) rowkey.get(o));
 			
 			for(Column column : tableMapping.getColumns()){
 				Field field = tableMapping.getField(column);

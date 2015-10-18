@@ -6,7 +6,7 @@ import com.hyman.highbird.orm.annotation.Table;
 
 @Table(name="student",families={"info"})
 public class Student {
-	@RowKey(name="rowKey")
+	@RowKey
 	private String rowKey;
 	@Qualifier(family="info",qualifier="id")
 	private String id;
