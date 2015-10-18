@@ -44,7 +44,12 @@ public class GenericCRUD<H> extends EntityRelationConvert<H> implements CRUD<H>{
 	}
 	
 	@Override
-	public List<H> list(List<Get> gets){
+	public List<H> list(String... rowKeys){
+		
+		List<Get> gets = new ArrayList<Get>();
+		for(String rowKey:rowKeys){
+			gets.add(buildGet(rowKey));
+		}
 		List<H> ret = new ArrayList<H>();
 		try {
 		    Result[] results = table.get(gets);

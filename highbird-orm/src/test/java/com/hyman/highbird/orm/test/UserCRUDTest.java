@@ -2,10 +2,8 @@ package com.hyman.highbird.orm.test;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.hadoop.hbase.client.Get;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -25,13 +23,7 @@ public class UserCRUDTest {
 	@Test
 	public void testList() throws IOException{
 		
-		List<Get> gets = new ArrayList<Get>(); 
-		    
-	    Get get1 = new Get("1".getBytes());
-	    gets.add(get1);
-		
-		List<User> list = crud.list(gets);
-		
+		List<User> list = crud.list("0001","0002");
 		for(User u : list){
 			System.out.println(u);
 		}
