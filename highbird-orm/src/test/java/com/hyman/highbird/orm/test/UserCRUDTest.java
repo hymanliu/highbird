@@ -40,7 +40,7 @@ public class UserCRUDTest {
 	
 	@Test
 	public void testPut(){
-		for(int i=100;i<200;i++){
+		for(int i=0;i<200;i++){
 			User u = new User();
 			DecimalFormat df = new DecimalFormat("0000");
 			u.setId(df.format(i));
