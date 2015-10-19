@@ -5,7 +5,7 @@
   <parent>
     <groupId>com.hyman.highbird</groupId>
     <artifactId>highbird-framework</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
   </parent>
   <artifactId>highbird-orm</artifactId>
   <name>highbird-orm</name>
