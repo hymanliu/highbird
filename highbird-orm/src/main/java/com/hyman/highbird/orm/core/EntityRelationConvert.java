@@ -12,6 +12,8 @@ import org.apache.hadoop.hbase.client.Put;
 import org.apache.hadoop.hbase.client.Result;
 import org.apache.hadoop.hbase.util.Bytes;
 
+import com.hyman.highbird.orm.converter.ConverterUtil;
+
 /**
  * 
  * @ClassName: EntityRelationConvert 
@@ -48,11 +50,8 @@ public abstract class EntityRelationConvert<H> {
 			for(Column key : columns.keySet()){
 				Field field = tableMapping.getField(key);
 				field.setAccessible(true);
-				try {
-					BeanUtils.setProperty(t, field.getName(), columns.get(key));
-				} catch (InvocationTargetException e) {
-					System.out.println(e.getMessage());
-				}
+				Object value = ConverterUtil.convert(columns.get(key), field.getType());
+				field.set(t, value);
 			}
 			Field rowKey = tableMapping.getRowkey();
 			rowKey.setAccessible(true);
@@ -81,7 +80,7 @@ public abstract class EntityRelationConvert<H> {
 			for(Column column : tableMapping.getColumns()){
 				Field field = tableMapping.getField(column);
 				field.setAccessible(true);
-				row.putColumn(column, field.get(o).toString());
+				row.putColumn(column, ConverterUtil.convert(field.get(o)));
 			}
 		} catch (IllegalArgumentException | IllegalAccessException e) {
 			e.printStackTrace();

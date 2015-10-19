@@ -5,8 +5,7 @@ import java.util.Date;
 
 import org.junit.Test;
 
-import com.hyman.highbird.orm.convertor.ConverterUtil;
-
+import com.hyman.highbird.orm.converter.ConverterUtil;
 
 
 public class ConverterUtilTest {
@@ -16,11 +15,13 @@ public class ConverterUtilTest {
 		
 		String date = ConverterUtil.convert(new Date());
 		System.out.println(date);
-		
-		Date d = (Date) ConverterUtil.convert(Date.class,"20150101000000");
+		Date d = (Date) ConverterUtil.convert("20150101000000",Date.class);
 		System.out.println(d);
-		
-		Integer i = (Integer) ConverterUtil.convert(Integer.class,"1000000");
+		Integer i = (Integer) ConverterUtil.convert("1000000",Integer.class);
 		System.out.println(i);
+		System.out.println(int.class == Integer.class);
+		
 	}
+	
+	
 }
