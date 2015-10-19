@@ -1,5 +1,7 @@
 package com.hyman.highbird.entity;
 
+import java.util.Date;
+
 import com.hyman.highbird.orm.annotation.Qualifier;
 import com.hyman.highbird.orm.annotation.RowKey;
 import com.hyman.highbird.orm.annotation.Table;
@@ -15,6 +17,8 @@ public class User {
 	private String phone;
 	@Qualifier(family="info",qualifier = "age")
 	private int age;
+	@Qualifier(family="info",qualifier = "birth")
+	private Date birth;
 	
 	
 	public String getName() {
@@ -32,7 +36,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "id:"+id+"\tname:"+name+"\tphone:"+phone;
+		return "id:"+id+"\tname:"+name+"\tphone:"+phone +"\tage:"+age+"\tbith:"+birth;
 	}
 	public String getId() {
 		return id;
@@ -46,5 +50,10 @@ public class User {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	
+	public Date getBirth() {
+		return birth;
+	}
+	public void setBirth(Date birth) {
+		this.birth = birth;
+	}
 }

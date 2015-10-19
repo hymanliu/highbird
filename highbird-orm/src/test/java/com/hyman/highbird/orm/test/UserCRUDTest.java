@@ -2,6 +2,7 @@ package com.hyman.highbird.orm.test;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.BeforeClass;
@@ -40,22 +41,24 @@ public class UserCRUDTest {
 	
 	@Test
 	public void testPut(){
-//		for(int i=0;i<200;i++){
-//			User u = new User();
-//			DecimalFormat df = new DecimalFormat("0000");
-//			u.setId(df.format(i));
-//			u.setName("hyman-"+i);
-//			u.setPhone("1868882"+df.format(i));
-//			crud.add(u);
-//		}
+		for(int i=0;i<200;i++){
+			User u = new User();
+			DecimalFormat df = new DecimalFormat("0000");
+			u.setId(df.format(i));
+			u.setName("hyman-"+i);
+			u.setPhone("1868882"+df.format(i));
+			u.setAge(i);
+			u.setBirth(new Date());
+			crud.add(u);
+		}
 		
-		User u = new User();
+	/*	User u = new User();
 		DecimalFormat df = new DecimalFormat("0000");
 		u.setId(df.format(103));
 		u.setName("hyman-"+103);
 		u.setPhone("1868882"+df.format(103));
 		u.setAge(20);
-		crud.add(u);
+		crud.add(u);*/
 	}
 	
 	@Test
