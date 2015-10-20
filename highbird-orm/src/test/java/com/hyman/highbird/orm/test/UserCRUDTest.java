@@ -5,6 +5,8 @@ import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.hadoop.hbase.filter.ColumnPrefixFilter;
+import org.apache.hadoop.hbase.filter.Filter;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -32,7 +34,7 @@ public class UserCRUDTest {
 	
 	@Test
 	public void testPageScan(){
-		Page<User> page = crud.scanPage("", 3);
+		Page<User> page = crud.scanPage("", 3,null);
 		
 		for(User u :page.getResultList()){
 			System.out.println(u);
@@ -63,7 +65,8 @@ public class UserCRUDTest {
 	
 	@Test
 	public void testPageScan2(){
-		Page<User> page = crud.scanPage("0096",20,20,5);
+		Filter filter = new ColumnPrefixFilter("phone".getBytes());
+		Page<User> page = crud.scanPage("0096",20,20,5,filter);
 		for(User u :page.getResultList()){
 			System.out.println(u);
 		}

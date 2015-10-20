@@ -63,16 +63,13 @@ public class GenericCRUD<H> extends EntityRelationConvert<H> implements CRUD<H>{
 	}
 	
 	@Override
-	public Page<H> scanPage(String startRow, int limit){
+	public Page<H> scanPage(String startRow, int limit,Filter filter){
 		Page<H> page = new Page<>();
 		Scan scan = new Scan();
 		
 		PageFilter pfilter = new PageFilter(limit);
-		
-		List<Filter> filters = new ArrayList<Filter>();
-		filters.add(pfilter);
-		FilterList filterList = new FilterList(filters);
-		
+		FilterList filterList = new FilterList(pfilter);
+		if(filter != null) filterList.addFilter(filter);
 		scan.setFilter(filterList);
 		
 		ResultScanner scanner = null;
@@ -92,11 +89,12 @@ public class GenericCRUD<H> extends EntityRelationConvert<H> implements CRUD<H>{
 	}
 	
 	@Override
-	public Page<H> scanPage(String fromRowkey, int fromIndex, int pageIndex, int pageSize){
+	public Page<H> scanPage(String fromRowkey, int fromIndex, int pageIndex, int pageSize,Filter filter){
 		Page<H> page = new Page<>();
 		Scan scan = new Scan();
 		int limit= pageSize;
 		int offset = 0;
+		FilterList filterList = new FilterList();
 		PageFilter pageFilter = null;
 		// 缓存1000条数据
 		scan.setCaching(1000);
@@ -115,7 +113,10 @@ public class GenericCRUD<H> extends EntityRelationConvert<H> implements CRUD<H>{
 			}
 			offset = (pageIndex-1) * pageSize;
 		}
-		scan.setFilter(pageFilter);
+		filterList.addFilter(pageFilter);
+		if(filter != null) filterList.addFilter(filter);
+		scan.setFilter(filterList);
+		
 		ResultScanner scanner = null;
 		try {
 			scanner = table.getScanner(scan);
