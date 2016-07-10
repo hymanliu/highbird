@@ -1,54 +1,54 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-
-  <groupId>com.hyman.highbird</groupId>
-  <artifactId>highbird-framework</artifactId>
-  <version>1.1.0</version>
-  <packaging>pom</packaging>
-
-  <name>highbird-framework</name>
-  <url>http://maven.apache.org</url>
-
-  <properties>
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.hyman.highbird</groupId>
+    <artifactId>highbird-framework</artifactId>
+    <version>1.1.0</version>
+    <packaging>pom</packaging>
+	  
+	<properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <hadoop.version>2.5.0-cdh5.3.3</hadoop.version>
-	<hbase.version>0.98.6-cdh5.3.3</hbase.version>
+    <hbase.version>0.98.6-cdh5.3.3</hbase.version>
   </properties>
   
   <repositories>
-		<repository>
-			<id>cdh.repo</id>
-			<url>https://repository.cloudera.com/artifactory/cloudera-repos</url>
-			<name>Cloudera Repositories</name>
-		</repository>
-		<repository>
-			<id>p2.jfrog.org</id>
-			<url>http://p2.jfrog.org/libs-releases</url>
-		</repository>
-	</repositories>
+        <repository>
+            <id>cdh.repo</id>
+            <url>https://repository.cloudera.com/artifactory/cloudera-repos</url>
+            <name>Cloudera Repositories</name>
+        </repository>
+        <repository>
+            <id>p2.jfrog.org</id>
+            <url>http://p2.jfrog.org/libs-releases</url>
+        </repository>
+    </repositories>
+  
+  <dependencies>
+    <dependency>
+        <groupId>jdk.tools</groupId>
+        <artifactId>jdk.tools</artifactId>
+        <version>1.7</version>
+        <scope>system</scope>
+        <systemPath>${JAVA_HOME}/lib/tools.jar</systemPath>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.hadoop</groupId>
+        <artifactId>hadoop-client</artifactId>
+        <version>${hadoop.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.hbase</groupId>
+        <artifactId>hbase-client</artifactId>
+        <version>${hbase.version}</version>
+    </dependency>
+  </dependencies>
   
   <modules>
-  	<module>highbird-orm</module>
-  </modules>
-
-  <dependencies>
-	<dependency>
-		<groupId>jdk.tools</groupId>
-		<artifactId>jdk.tools</artifactId>
-		<version>1.7</version>
-		<scope>system</scope>
-		<systemPath>${JAVA_HOME}/lib/tools.jar</systemPath>
-	</dependency>
-	<dependency>
-		<groupId>org.apache.hadoop</groupId>
-		<artifactId>hadoop-client</artifactId>
-		<version>${hadoop.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.apache.hbase</groupId>
-		<artifactId>hbase-client</artifactId>
-		<version>${hbase.version}</version>
-	</dependency>
-  </dependencies>
+		<module>highbird-orm-test</module>
+		<module>highbird-orm</module>
+	</modules>
+  
 </project>
