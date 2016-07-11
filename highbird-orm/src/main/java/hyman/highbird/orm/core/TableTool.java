@@ -7,12 +7,12 @@ import java.io.IOException;
 import org.apache.hadoop.hbase.HColumnDescriptor;
 import org.apache.hadoop.hbase.HTableDescriptor;
 import org.apache.hadoop.hbase.TableName;
-import org.apache.hadoop.hbase.client.HBaseAdmin;
+import org.apache.hadoop.hbase.client.Admin;
 
 
 public class TableTool {
 	
-	private static HBaseAdmin admin = HBaseUtil.getHBaseAdmin();
+	private static Admin admin = HBaseUtil.getAdmin();
 	
 	public static void createTable(TableMapping mapping){
 		
@@ -25,7 +25,8 @@ public class TableTool {
 		}
 		HTableDescriptor desc = new HTableDescriptor(tableDesc);
 		try {
-			if(!admin.tableExists(mapping.getName())){
+			TableName tableName= TableName.valueOf(mapping.getName());
+			if(!admin.tableExists(tableName)){
 				admin.createTable(desc);
 			}
 		} catch (IOException e) {
@@ -36,7 +37,7 @@ public class TableTool {
 	
 	public static void dropTable(TableMapping mapping){
 		try {
-			String tableName = mapping.getName();
+			TableName tableName= TableName.valueOf(mapping.getName());
 			if(!admin.tableExists(tableName)){
 				return;
 			}

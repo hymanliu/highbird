@@ -5,19 +5,17 @@ import hyman.highbird.orm.core.HTableFactory;
 import hyman.highbird.orm.util.Page;
 
 import java.io.IOException;
-import java.io.InterruptedIOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.hadoop.hbase.client.Delete;
 import org.apache.hadoop.hbase.client.Get;
-import org.apache.hadoop.hbase.client.HTable;
 import org.apache.hadoop.hbase.client.Put;
 import org.apache.hadoop.hbase.client.Result;
 import org.apache.hadoop.hbase.client.ResultScanner;
-import org.apache.hadoop.hbase.client.RetriesExhaustedWithDetailsException;
 import org.apache.hadoop.hbase.client.Scan;
+import org.apache.hadoop.hbase.client.Table;
 import org.apache.hadoop.hbase.filter.Filter;
 import org.apache.hadoop.hbase.filter.FilterList;
 import org.apache.hadoop.hbase.filter.PageFilter;
@@ -34,7 +32,7 @@ import org.apache.hadoop.hbase.util.Bytes;
  */
 public class GenericCRUD<H> extends EntityRelationConvert<H> implements CRUD<H>{
 	
-	private HTable table;
+	private Table table;
 	private HTableFactory tableFactory = null;
 	
 	public GenericCRUD(){
@@ -158,7 +156,7 @@ public class GenericCRUD<H> extends EntityRelationConvert<H> implements CRUD<H>{
 		if(put==null) return;
 		try {
 			table.put(put);
-		} catch (RetriesExhaustedWithDetailsException | InterruptedIOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}

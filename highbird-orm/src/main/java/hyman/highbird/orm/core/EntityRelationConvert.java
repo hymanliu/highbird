@@ -131,7 +131,7 @@ public abstract class EntityRelationConvert<H> {
 		Put put = new Put(Bytes.toBytes(row.getId()));
 		Map<Column,String> columnMap = row.getCols();
 		for(Column key:columnMap.keySet()){
-			put.add(key.getFamily().getBytes(), Bytes.toBytes(key.getQualifier()), Bytes.toBytes(columnMap.get(key)));
+			put.addColumn(key.getFamily().getBytes(), Bytes.toBytes(key.getQualifier()), Bytes.toBytes(columnMap.get(key)));
 		}
 		return put;
 	}

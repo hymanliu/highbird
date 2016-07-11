@@ -28,6 +28,7 @@ public class DefaultTypeConverter implements Converter {
         primitiveDefaults = Collections.unmodifiableMap(map);
     }
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public Object convert(Object value, Class<?> toType) {
 		Object result = null;
@@ -107,7 +108,8 @@ public class DefaultTypeConverter implements Converter {
         return true; // non-null
     }
     
-    public Enum<?> enumValue(Class toClass, Object o) {
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+	public Enum<?> enumValue(Class toClass, Object o) {
         Enum<?> result = null;
         if (o == null) {
             result = null;

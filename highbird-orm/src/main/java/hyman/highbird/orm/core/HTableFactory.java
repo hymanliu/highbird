@@ -6,7 +6,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.hadoop.hbase.client.HTable;
+import org.apache.hadoop.hbase.TableName;
+import org.apache.hadoop.hbase.client.Table;
 import org.apache.log4j.Logger;
 
 
@@ -16,7 +17,7 @@ import org.apache.log4j.Logger;
  */
 public class HTableFactory {
 	private static final Logger log = Logger.getLogger(HTableFactory.class);
-	private static Map<Class<?>,HTable> tableMap = new HashMap<Class<?>,HTable>();
+	private static Map<Class<?>,Table> tableMap = new HashMap<Class<?>,Table>();
 	
 	private static HTableFactory instance;
 	
@@ -44,18 +45,19 @@ public class HTableFactory {
 		}
 	}
 	
-	public HTable createHTable(Class<?> clazz){
-		HTable htable = tableMap.get(clazz);
+	public Table createHTable(Class<?> clazz){
+		Table table = tableMap.get(clazz);
 		TableMapping tableConf = configuration.get(clazz);
-		if(htable==null){
+		if(table==null){
 			try {
-				htable = new HTable(HBaseUtil.getConfiguration(),tableConf.getName());
-				tableMap.put(clazz, htable);
+				TableName tableName= TableName.valueOf(tableConf.getName());
+				table = HBaseUtil.getConnection().getTable(tableName);
+				tableMap.put(clazz, table);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
-		return htable;
+		return table;
 	}
 
 }
