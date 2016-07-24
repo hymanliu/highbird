@@ -13,6 +13,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.hsqldb.lib.StringUtil;
+
 
 public class HighBirdOrmContext {
 	
@@ -61,6 +63,7 @@ public class HighBirdOrmContext {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 		String line = null;
 		while((line = reader.readLine())!=null){
+			if(StringUtil.isEmpty(line) || line.startsWith("#")) continue;
 			clazzes.add(classLoader.loadClass(line));
 		}
 	}

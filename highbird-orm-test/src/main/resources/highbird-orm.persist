@@ -1,2 +1,2 @@
-com.hyman.highbird.entity.User
-com.hyman.highbird.entity.Student
+hyman.highbird.orm.test.entity.User
+#com.hyman.highbird.test.entity.Student
